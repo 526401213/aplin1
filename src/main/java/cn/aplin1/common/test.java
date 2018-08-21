@@ -5,4 +5,8 @@ public class test {
 	public void aa(){
 		
 	}
+	
+	public void bb(){
+		
+	}
 }
