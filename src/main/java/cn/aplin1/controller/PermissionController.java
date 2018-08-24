@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 角色模块
  */
 @Controller
-@RequestMapping("/role")
+@RequestMapping("/permission")
 public class PermissionController {
 
 	
