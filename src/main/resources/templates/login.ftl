@@ -7,15 +7,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="/static/hui/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/static/hui/lib/respond.min.js"></script>
+<script type="text/javascript" src="/static/hui/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/static/hui/h-ui/js/H-ui.min.js"></script>
 <![endif]-->
-<link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
-<link href="lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="/static/hui/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/hui/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/static/hui/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/hui/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/static/hui/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>后台登录 - H-ui.admin 3.0</title>
@@ -40,7 +42,7 @@
           <input id="" name="" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
-      <div class="row cl">
+     <!-- <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
           <img src=""> <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div>
@@ -51,7 +53,7 @@
             <input type="checkbox" name="online" id="online" value="">
             使我保持登录状态</label>
         </div>
-      </div>
+      </div>-->
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
@@ -62,8 +64,8 @@
   </div>
 </div>
 <div class="footer">Copyright 你的公司名称 by H-ui.admin 3.0</div>
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/hui/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/static/hui/h-ui/js/H-ui.min.js"></script>
 <!--此乃百度统计代码，请自行删除-->
 <script>
 

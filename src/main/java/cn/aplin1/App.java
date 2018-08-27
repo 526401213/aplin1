@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author 附耳聆听
  *
  */
-@MapperScan("com.aplin1.dao.mapper")
+@MapperScan("cn.aplin1.dao")
 @SpringBootApplication
 public class App {
 
