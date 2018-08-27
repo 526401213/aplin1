@@ -8,9 +8,9 @@ import cn.aplin1.common.ResponseEnum;
 import cn.aplin1.common.ResponseResult;
 
 /**
- * 登录
- * @author 附耳聆听
  * 乐意相关禽对语，生香不断树交花
+ * @author 附耳聆听
+ * 登录
  */
 @Controller
 @RequestMapping("/index")
