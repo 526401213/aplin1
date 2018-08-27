@@ -23,19 +23,19 @@ public class UserController {
 	public String list() {
 		
 		
-		return "";
+		return "/permission/admin-list";
 	}
 	
 	@RequestMapping("/toAdd")
 	public String toAdd() {
 		
-		return "";
+		return "/permission/admin-add";
 	}
 	
 	@RequestMapping("/add")
 	public String add() {
 		
-		return "";
+		return "redirect : /user/list";
 	}
 	
 	

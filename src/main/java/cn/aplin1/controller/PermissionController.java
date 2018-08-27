@@ -17,6 +17,15 @@ public class PermissionController {
 	public String list() {
 		
 		
-		return "";
+		return "/permission/admin-permission";
 	}
+	
+	
+	@RequestMapping("/toAdd")
+	public String toAdd() {
+		
+		return "/permission/admin-permission-add";
+	}
+	
+	
 }

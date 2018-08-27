@@ -16,7 +16,13 @@ public class RoleController {
 	public String list() {
 		
 		
-		return "";
+		return "/permission/admin-role";
+	}
+	
+	@RequestMapping("/toAdd")
+	public String toAdd() {
+		
+		return "/permission/admin-role-add";
 	}
 	
 	

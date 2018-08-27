@@ -2,6 +2,10 @@ package cn.aplin1.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.aplin1.common.ResponseEnum;
+import cn.aplin1.common.ResponseResult;
 
 /**
  * 登录
@@ -20,11 +24,12 @@ public class LoginController {
 		return "login";
 	}
 	
+	
 	@RequestMapping("/login")
-	public String login() {
+	public @ResponseBody ResponseResult login() {
 		
 		
-		return "login";
+		return new ResponseResult(ResponseEnum.RESULT_SUCCESS, "成功");
 	}
 	
 	
