@@ -3,7 +3,11 @@ package cn.aplin1.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.aplin1.common.ResponseEnum;
+import cn.aplin1.common.ResponseResult;
+import cn.aplin1.domain.User;
 import cn.aplin1.service.UserService;
 
 /**
@@ -33,9 +37,11 @@ public class UserController {
 	}
 	
 	@RequestMapping("/add")
-	public String add() {
+	public @ResponseBody ResponseResult add(User user) {
 		
-		return "redirect : /user/list";
+		uservice.insert(user);
+		
+		return new ResponseResult(ResponseEnum.RESULT_SUCCESS, "ok");
 	}
 	
 	

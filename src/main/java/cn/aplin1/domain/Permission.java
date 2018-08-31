@@ -1,7 +1,14 @@
 package cn.aplin1.domain;
 
-public class Permission {
-    private Long id;
+import java.io.Serializable;
+
+public class Permission implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     private String name;
 
@@ -17,7 +24,17 @@ public class Permission {
 
     private Integer leven;
 
-    public Long getId() {
+    private String typeStr;
+    
+    public String getTypeStr() {
+		return typeStr;
+	}
+
+	public void setTypeStr(String typeStr) {
+		this.typeStr = typeStr;
+	}
+
+	public Long getId() {
         return id;
     }
 

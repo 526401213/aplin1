@@ -38,20 +38,30 @@
 			</tr>
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
-				<th width="40">ID</th>
-				<th width="200">权限名称</th>
-				<th>字段名</th>
+				<th>ID</th>
+				<th width="40">权限名字</th>
+				<th width="200">permissionKey</th>
+				<th>permissionURL</th>
+				<th>类型</th>
+				<th>父节点ID</th>
 				<th width="100">操作</th>
 			</tr>
 		</thead>
 		<tbody>
+		<#if Permissions??>
+		<#list Permissions.list as Permission>
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td>栏目添加</td>
-				<td></td>
-				<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				<td>${Permission.id?if_exists}</td>
+				<td>${Permission.name?if_exists}</td>
+				<td>${Permission.permissionKey?if_exists}</td>
+				<td>${Permission.permissionUrl?if_exists}</td>
+				<td>${Permission.typeStr?if_exists}</td>
+				<td>${Permission.parentId?if_exists}</td>
+				<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,${Permission.id?if_exists})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
+		</#list>
+		</#if>
 		</tbody>
 	</table>
 </div>
@@ -86,7 +96,8 @@ function admin_permission_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: '/permission/del',
+			data: {id:id},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();

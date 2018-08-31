@@ -16,6 +16,9 @@ public class RoleService {
 	public void insert(Role role) {
 		roleMapper.insertSelective(role);
 	}
+
+
+	
 	
 	
 }

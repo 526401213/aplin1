@@ -63,7 +63,9 @@
 		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" >
 			<select class="select" name="parentId" size="1">
 				<option value="0">无</option>
-			
+				<#list all as a>
+				<option value="${a.id}"><#if a.leven == 1>|-<#elseif  a.leven == 2>　|-<#else>　　|-</#if>${a.name}</option>
+				</#list>
 			</select>
 			</span> 
 		</div>
@@ -97,8 +99,10 @@
 
 function sub(){
 
-alert()
+
 	$.post("/permission/add",$("#form-admin-add").serialize(),function(rs){
+	//window.location.href="/permission/list";
+	parent.location.reload();
 	},"json")
 
 }
