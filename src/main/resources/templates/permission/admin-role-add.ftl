@@ -45,49 +45,47 @@
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">网站角色：</label>
+			
 			<div class="formControls col-xs-8 col-sm-9">
-				
-				
-				
-				
+			<#if permissionDtos??>
+			<#list permissionDtos as permissionDto>
 				<dl class="permission-list">
 					<dt>
 						<label>
-							<input type="checkbox" value="" name="user-Character-0" id="user-Character-1">
-							用户中心</label>
+							<input type="checkbox" value="${permissionDto.permissionId?if_exists}" name="user-Character-0" id="user-Character-0">
+							${permissionDto.permissionName?if_exists}</label>
 					</dt>
+					
 					<dd>
+					<#if permissionDto.menus??>
+					<#list permissionDto.menus as menu>
 						<dl class="cl permission-list2">
 							<dt>
 								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0" id="user-Character-1-0">
-									用户管理</label>
+									<input type="checkbox" value="${menu.permissionId?if_exists}" name="user-Character-0-0" id="user-Character-0-0">
+									${menu.permissionName?if_exists}</label>
 							</dt>
+						
 							<dd>
+							<#if menu.buttons??>
+						<#list menu.buttons as button>
 								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-0">
-									添加</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-1">
-									修改</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-2">
-									删除</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-3">
-									查看</label>
-								<label class="">
-									<input type="checkbox" value="" name="user-Character-1-0-0" id="user-Character-1-0-4">
-									审核</label>
+									<input type="checkbox" value="${button.permissionId?if_exists}" name="user-Character-0-0-0" id="user-Character-0-0-0">
+									${button.permissionName?if_exists}</label>
+						</#list>
+							</#if>		
 							</dd>
+							
 						</dl>
+						</#list>
+					</#if>
 					</dd>
+					
 				</dl>
-				
-				
-				
-				
+			</#list> 	
+		  </#if>
 			</div>
+	
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
@@ -145,6 +143,23 @@ $(function(){
 		}
 	});
 });
+</script>
+
+<script type="text/javascript">
+
+function sub(){
+	
+
+
+ 	return null;
+	$.post("/role/add",{"permissionIds":permissionIds,"des":des,"name":name},function(rs){
+	console.log(rs)
+	})
+
+}
+
+
+
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.aplin1.common.ResponseEnum;
 import cn.aplin1.common.ResponseResult;
 import cn.aplin1.domain.Role;
-import cn.aplin1.dto.PermissionDataDto;
+import cn.aplin1.domain.RolePermission;
+import cn.aplin1.dto.PermissionDto;
 import cn.aplin1.service.PermissionService;
+import cn.aplin1.service.RolePermissionService;
 import cn.aplin1.service.RoleService;
 
 /**
@@ -24,11 +26,13 @@ import cn.aplin1.service.RoleService;
 @RequestMapping("/role")
 public class RoleController {
 
-	
 	@Autowired
 	private RoleService roleService;
 	@Autowired
 	private PermissionService permissionService;
+	@Autowired
+	private RolePermissionService rolePermissionService;
+	
 	
 	@RequestMapping("/list")
 	public String list() {
@@ -39,15 +43,24 @@ public class RoleController {
 	
 	@RequestMapping("/toAdd")
 	public String toAdd(ModelMap map) {
-		List<PermissionDataDto> dtos=permissionService.getPermissionData();
-		map.addAttribute("dtos", dtos);
+		List<PermissionDto> permissionDtos=permissionService.getPermissionData2();
+		map.addAttribute("permissionDtos", permissionDtos);
 		return "/permission/admin-role-add";
 	}
 	
 	@RequestMapping("/add")
-	public @ResponseBody ResponseResult add(Role role){
+	public @ResponseBody ResponseResult add(String des,String name,Long[] permissionIds){
+		Role role=new Role();
+		role.setDes(des);
+		role.setName(name);
 		roleService.insert(role);
-		
+		for (Long permissionId : permissionIds) {
+			RolePermission permission=new RolePermission();
+			permission.setRoleId(role.getId());
+			permission.setPermissionId(permissionId);
+			rolePermissionService.insert(permission);
+		}
+
 		return new ResponseResult(ResponseEnum.RESULT_SUCCESS, "ok");
 	}
 	

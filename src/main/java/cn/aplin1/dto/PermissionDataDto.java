@@ -6,11 +6,22 @@ public class PermissionDataDto {
 
 	private String type2PermissionName;//type是菜单的名字
 	private Long  type2PermissionId;//type是菜单的id
+	private Integer parentId;
 	
 	private List<TypeDto> type0;//type 是0
-	private List<TypeDto> type1;//type是1
+	private List<TypeDto> type1;//type是1按钮
 	
 	
+	public Integer getParentId() {
+		return parentId;
+	}
+
+
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
+
+
 	public List<TypeDto> getType1() {
 		return type1;
 	}

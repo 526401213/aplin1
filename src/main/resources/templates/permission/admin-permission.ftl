@@ -39,7 +39,7 @@
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th>ID</th>
-				<th width="40">权限名字</th>
+				<th width="140">权限名字</th>
 				<th width="200">permissionKey</th>
 				<th>permissionURL</th>
 				<th>类型</th>

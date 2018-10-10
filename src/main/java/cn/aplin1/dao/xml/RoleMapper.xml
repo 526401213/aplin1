@@ -98,10 +98,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.aplin1.domain.Role" >
+    <selectKey keyProperty="id" order="AFTER" resultType="long">
+    SELECT LAST_INSERT_ID();
+  </selectKey>
     insert into role (id, name, des)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{des,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.aplin1.domain.Role" >
+  <selectKey keyProperty="id" order="AFTER" resultType="long">
+    SELECT LAST_INSERT_ID();
+  </selectKey>
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

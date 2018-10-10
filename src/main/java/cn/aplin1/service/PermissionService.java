@@ -14,7 +14,10 @@ import cn.aplin1.common.CommonPage;
 import cn.aplin1.dao.PermissionMapper;
 import cn.aplin1.domain.Permission;
 import cn.aplin1.domain.PermissionExample;
+import cn.aplin1.dto.ButtonPermissionDto;
+import cn.aplin1.dto.MentPermissionDto;
 import cn.aplin1.dto.PermissionDataDto;
+import cn.aplin1.dto.PermissionDto;
 import cn.aplin1.dto.TypeDto;
 
 @Service
@@ -93,6 +96,7 @@ public class PermissionService {
 				TypeDto typeDto0=new TypeDto();
 				typeDto0.setTypePermissionId(permission0.getId());
 				typeDto0.setTypePermissionName(permission0.getName());
+				typeDto0.setParentId(permission0.getParentId());
 				type0.add(typeDto0);
 				
 				dataDto.setType0(type0);
@@ -108,6 +112,7 @@ public class PermissionService {
 					TypeDto typeDto1=new TypeDto();
 					typeDto1.setTypePermissionName(permission1.getName());
 					typeDto1.setTypePermissionId(permission1.getId());
+					typeDto1.setParentId(permission1.getParentId());
 					type1.add(typeDto1);
 					dataDto.setType1(type1);
 					
@@ -124,6 +129,52 @@ public class PermissionService {
 		PermissionExample example=new PermissionExample();
 		example.createCriteria().andParentIdEqualTo(parentId);
 		return permissionMapper.selectByExample(example);
+	}
+
+
+	public List<PermissionDto> getPermissionData2() {
+		List<PermissionDto> result=new ArrayList<>();
+		List<Permission> mulu = getByParentId(0);
+		for (Permission permission : mulu) {
+			PermissionDto r=new PermissionDto();
+			r.setParentId(permission.getParentId());
+			r.setPermissionId(permission.getId());
+			r.setPermissionName(permission.getName());
+			List<Permission> caidans = getByParentId(Integer.parseInt(String.valueOf(permission.getId())));
+			List<MentPermissionDto> caidanDtos=new ArrayList<>();
+			if(caidans== null) {
+				break;
+			}
+			MentPermissionDto caidan=null;
+			for (Permission mentPermissionDto : caidans) {
+				 caidan=new MentPermissionDto();
+				 caidan.setParentId(mentPermissionDto.getParentId());
+				 caidan.setPermissionId(mentPermissionDto.getId());
+				 caidan.setPermissionName(mentPermissionDto.getName());
+				 
+				 //按钮
+				 List<Permission> buttons = getByParentId(Integer.parseInt(String.valueOf(mentPermissionDto.getId())));
+				 if(buttons == null) {
+					 break;
+				 }
+				 List<ButtonPermissionDto> buttonsDto=new ArrayList<>();
+				 for (Permission permission2 : buttons) {
+					 ButtonPermissionDto buttonDto=new ButtonPermissionDto();
+					 buttonDto.setParentId(permission2.getParentId());
+					 buttonDto.setPermissionId(permission2.getId());
+					 buttonDto.setPermissionName(permission2.getName());
+					 buttonsDto.add(buttonDto);
+				 }
+				 caidan.setButtons(buttonsDto);
+				 caidanDtos.add(caidan);
+			}
+			r.setMenus(caidanDtos);//菜单
+			
+			result.add(r);
+			
+		}
+		System.out.println(result);
+		return result;
 	}
 	
 }
