@@ -1,5 +1,7 @@
 package cn.aplin1.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,7 @@ public class UserController {
 	
 	@RequestMapping("/add")
 	public @ResponseBody ResponseResult add(User user) {
-		
+		user.setCreateTime(new Date());
 		uservice.insert(user);
 		
 		return new ResponseResult(ResponseEnum.RESULT_SUCCESS, "ok");
